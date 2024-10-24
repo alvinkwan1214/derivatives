@@ -12,7 +12,7 @@ payout_stock = normal_stock(40, underlying_range)
 total = (payout_put + payout_stock)
 
 plt.plot(underlying_range, total)
-plt.axhline(0, color='black', linewidth=.5)
+plt.axhline(0, color='black', linewidth=1)
 #plt.axvline(0, color='black', linewidth=.5)
 plt.grid()
 plt.show()

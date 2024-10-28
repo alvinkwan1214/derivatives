@@ -27,3 +27,17 @@ def futures(future_price, underlying, position):
 def normal_stock(original_price, underlying):
     return underlying - original_price
 
+
+def futures_value(spot_price, t, model = "COC model", r = 0, income_yield = 0, I = 0):
+    if model == "CoC model":
+        return spot_price * np.exp((r - income_yield) * t)
+    if model == "known-cash income":
+        return (spot_price + I) * np.exp(r * t)
+    
+def present_value(c, r, t, loops):
+    #assume regular interval 
+    cur = 0
+    for i in range(1, loops + 1):
+        cur += c * np.exp(-r * t * i)
+    
+    return c + cur

@@ -1,10 +1,18 @@
-from derivatives import eu_option, futures, normal_stock, futures_value, present_value
+import derivatives
 import numpy as np
+
 import matplotlib.pyplot as plt 
 
 
 
-present_value = present_value(0.06, 0.1, 0.25, 2)
-value = futures_value(9, t = 9/12, model="known-cash income", 
-                      r = 0.1, I = present_value)
+present_value = derivatives.present_value(1, 0.08, [2/12, 5/12])
+value = derivatives.futures_value(50, t = 6/12, model="known-cash income", 
+                      r = 0.08, I = present_value)
+print(present_value)
 print(value)
+
+present_value_3 = derivatives.present_value(1, 0.08, [2/12])
+value_3 = derivatives.futures_value(48, t = 3/12, model="known-cash income", 
+                      r = 0.08, I = present_value_3)
+print(present_value_3, value_3)
+print(derivatives.future_value(value, 48, r = 0.08, delta_t=3/12, other=present_value_3))
